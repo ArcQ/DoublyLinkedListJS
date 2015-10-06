@@ -1,0 +1,1 @@
+browserify ../DLinkedList/src/DLinkedList.js > ../DLinkedList/DLinkedList.js
