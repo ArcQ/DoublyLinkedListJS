@@ -1,0 +1,25 @@
+{
+  "name": "DLinkedList",
+  "version": "v1.0.0",
+  "description": "Double Linked List in Javascript",
+  "author": "Eddie Law <eddielaw296@gmail.com>",
+  "scripts": {
+    "test": "mocha"
+  },
+  "main": "DLinkedList/DLinkedList.js",
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/ArcQ/DoublyLinkedListJS"
+},
+  "bugs": {
+  "url": "https://github.com/ArcQ/DoublyLinkedListJS/issues"
+},
+  "keywords": [
+],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "chai": "^3.4.1"
+  },
+  "license": "MIT"
+}
