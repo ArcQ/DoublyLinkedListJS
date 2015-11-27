@@ -14,12 +14,18 @@
   "bugs": {
   "url": "https://github.com/ArcQ/DoublyLinkedListJS/issues"
 },
-  "keywords": [
-],
-  "dependencies": {
-  },
+  "keywords": [],
+  "dependencies": {},
   "devDependencies": {
-    "chai": "^3.4.1"
+    "browserify": "^12.0.1",
+    "chai": "^3.4.1",
+    "gulp": "3.9.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.1",
+    "gulp-util": "^3.0.7",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "license": "MIT"
 }
