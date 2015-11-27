@@ -1,6 +1,6 @@
 //LinkedList for objects
 //Many methods are based on the assumption that objects will consist of specific ids
-window.dLinkedList = function(){
+var dLinkedList = function(){
 	this.head = null;
 	this.tail = null;
 };
@@ -121,5 +121,7 @@ dLinkedList.prototype.remove = function(delNode){
 
 	return false;
 };
+
+window.dLinkedList = dLinkedList;
 
 module.exports = dLinkedList;
