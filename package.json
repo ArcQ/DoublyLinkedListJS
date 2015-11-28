@@ -2,7 +2,7 @@
   "name": "DLinkedList",
   "version": "v1.0.0",
   "description": "Double Linked List in Javascript",
-  "author": "Eddie Law <eddielaw296@gmail.com>",
+  "author": "ArcQ <eddielaw296@gmail.com>",
   "scripts": {
     "test": "mocha"
   },

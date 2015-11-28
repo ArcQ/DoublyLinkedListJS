@@ -1,1 +1,0 @@
-browserify ../DLinkedList/src/DLinkedList.js | uglifyjs > ../DLinkedList/DLinkedList.js
