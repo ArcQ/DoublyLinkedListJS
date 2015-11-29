@@ -124,15 +124,21 @@ dLinkedList.prototype.remove = function(delNode){
 	return false;
 };
 
+//callback returns true if continue
 dLinkedList.prototype.applyToEveryNode = function(callback){
+
+		var callback = arguments[0];
     var currentNode = ccObstacles.typesList.head;
     callback(currentNode);
     currentNode = currentNode.next;
     while(currentNode != null){
-        callback(currentNode);
+        var isContinue = callback(currentNode);
+        if(isContinue){
+        	break;
+        }
         currentNode = currentNode.next;
     }
-}
+};
 
 window.dLinkedList = dLinkedList;
 
