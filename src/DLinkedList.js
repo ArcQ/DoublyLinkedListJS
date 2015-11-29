@@ -133,7 +133,7 @@ dLinkedList.prototype.applyToEveryNode = function(callback){
     currentNode = currentNode.next;
     while(currentNode != null){
         var isContinue = callback(currentNode);
-        if(isContinue){
+        if(isContinue === true){
         	break;
         }
         currentNode = currentNode.next;
