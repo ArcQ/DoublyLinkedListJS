@@ -21,15 +21,17 @@ dLinkedList.prototype.push = function(obj){
 	if(this.head === null){
 		this.head = newNode;
 	}
-
-	if(this.tail !== null){
-		this.tail.next = newNode;
+	else{
+		if(this.tail !== null){
+			this.tail.next = newNode;
+			newNode.prev = this.tail;
+		}
+		else{
+			this.head.next = newNode;
+			newNode.prev = this.head;
+		}
+		this.tail = newNode;
 	}
-	newNode.prev = this.tail;
-	this.tail = newNode;
-	return newNode;
-
-};
 
 dLinkedList.prototype.insertAfter = function(refNode,inObj){
 	
@@ -121,6 +123,16 @@ dLinkedList.prototype.remove = function(delNode){
 
 	return false;
 };
+
+dLinkedList.prototype.applyToEveryNode = function(callback){
+    var currentNode = ccObstacles.typesList.head;
+    callback(currentNode);
+    currentNode = currentNode.next;
+    while(currentNode != null){
+        callback(currentNode);
+        currentNode = currentNode.next;
+    }
+}
 
 window.dLinkedList = dLinkedList;
 

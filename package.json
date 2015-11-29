@@ -1,12 +1,12 @@
 {
   "name": "dlinkedlist",
-  "version": "v1.0.0",
+  "version": "v1.0.3",
   "description": "Double Linked List in Javascript",
   "author": "ArcQ <eddielaw296@gmail.com>",
   "scripts": {
     "test": "mocha"
   },
-  "main": "DLinkedList/DLinkedList.js",
+  "main": "DLinkedList.js",
   "repository": {
   "type": "git",
   "url": "https://github.com/ArcQ/DoublyLinkedListJS"
