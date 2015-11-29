@@ -129,7 +129,7 @@ dLinkedList.prototype.remove = function(delNode){
 dLinkedList.prototype.applyToEveryNode = function(callback){
 
 		var callback = arguments[0];
-    var currentNode = ccObstacles.typesList.head;
+    var currentNode = this.head;
     callback(currentNode);
     currentNode = currentNode.next;
     while(currentNode != null){

@@ -26,7 +26,8 @@ before(function(){
     expT[1] = "1,2,3,4";
     expT[2] = "6,1,5,2,3,7,4";    
     expT[3] = "6,9,1,5,8,2,3,7,4,10";
-    expT[4] = "9,1,8,2,3,7,4";       
+    expT[4] = "9,1,8,2,3,7,4";   
+    expT[5] = "0,0,0,0,0,0,0";       
     
 })
  
@@ -110,6 +111,17 @@ describe('DLinkedListTest', function () {
             tailNode = linkedListTest.tail;
             linkedListTest.remove(tailNode);
             expect(expT[4]).equal(getCurOut());
+        }
+    );
+    //T5
+    it('should allow the removal of nodes based on value', function()
+        {
+            var makeNodeZero = function(currentNode){
+                currentNode.obj = 0;
+            }
+
+            linkedListTest.applyToEveryNode(makeNodeZero);
+            expect(expT[5]).equal(getCurOut());
         }
     );
 });
