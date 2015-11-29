@@ -32,6 +32,7 @@ dLinkedList.prototype.push = function(obj){
 		}
 		this.tail = newNode;
 	}
+}
 
 dLinkedList.prototype.insertAfter = function(refNode,inObj){
 	

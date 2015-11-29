@@ -2,7 +2,7 @@ window = {};
 var expT = [];
 var assert = require('assert'),
     expect = require('chai').expect,
-    DLinkedList = require('../../DLinkedList/DLinkedList.js');
+    DLinkedList = require('../../DLinkedList.js');
 
 process.env.NODE_ENV = 'test';
 
