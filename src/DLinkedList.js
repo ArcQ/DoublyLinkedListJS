@@ -32,6 +32,7 @@ dLinkedList.prototype.push = function(obj){
 		}
 		this.tail = newNode;
 	}
+	return newNode;
 }
 
 dLinkedList.prototype.insertAfter = function(refNode,inObj){
@@ -127,7 +128,6 @@ dLinkedList.prototype.remove = function(delNode){
 
 //callback returns true if continue
 dLinkedList.prototype.applyToEveryNode = function(callback){
-
 		var callback = arguments[0];
     var currentNode = this.head;
     callback(currentNode);
