@@ -114,7 +114,7 @@ describe('DLinkedListTest', function () {
         }
     );
     //T5
-    it('should allow the removal of nodes based on value', function()
+    it('should allow automatic application of a function on every node`', function()
         {
             var makeNodeZero = function(currentNode){
                 currentNode.obj = 0;

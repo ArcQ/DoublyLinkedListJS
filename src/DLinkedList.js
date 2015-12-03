@@ -126,14 +126,26 @@ dLinkedList.prototype.remove = function(delNode){
 	return false;
 };
 
-//callback returns true if continue
-dLinkedList.prototype.applyToEveryNode = function(callback){
+//callback returns true if continue (takes variable 1-2 arguments)
+dLinkedList.prototype.applyToEveryNode = function(){
 		var callback = arguments[0];
+		var arg = null;
+		if(arguments[1] !== null){
+			arg = arguments[1];
+		}
+
     var currentNode = this.head;
     callback(currentNode);
     currentNode = currentNode.next;
+
     while(currentNode != null){
-        var isContinue = callback(currentNode);
+    		var isContinue;
+    		if(arg !== null){
+					isContinue = callback(currentNode,arg);
+    		}
+    		else{
+					isContinue = callback(currentNode);
+    		}
         if(isContinue === true){
         	break;
         }
