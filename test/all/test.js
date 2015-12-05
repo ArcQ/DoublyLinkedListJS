@@ -27,8 +27,8 @@ before(function(){
     expT[2] = "6,1,5,2,3,7,4";    
     expT[3] = "6,9,1,5,8,2,3,7,4,10";
     expT[4] = "9,1,8,2,3,7,4";   
-    expT[5] = "0,0,0,0,0,0,0";       
-    
+    expT[5] = "0,0,0,0,0,0,0";
+    expT[6] = "0,0,0,2,1,0,0";          
 })
  
 describe('DLinkedListTest', function () {
@@ -118,10 +118,29 @@ describe('DLinkedListTest', function () {
         {
             var makeNodeZero = function(currentNode){
                 currentNode.obj = 0;
+                return true;
             }
 
-            linkedListTest.applyToEveryNode(makeNodeZero);
+            linkedListTest.applyToEveryNode(makeNodeZero,true);
             expect(expT[5]).equal(getCurOut());
+        }
+    );
+    //T5
+    it('should allow automatic backwards application of a function on a subset of the nodes`', function()
+        {   var i = 0;
+            var makeNodeZero = function(currentNode){
+                currentNode.obj = i;
+                i++;
+                if(i<3){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+            var startingNode = linkedListTest.tail.prev;
+            linkedListTest.iterate(makeNodeZero,false,startingNode);
+            expect(expT[6]).equal(getCurOut());
         }
     );
 });

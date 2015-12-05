@@ -126,32 +126,76 @@ dLinkedList.prototype.remove = function(delNode){
 	return false;
 };
 
-//callback returns true if continue (takes variable 1-2 arguments)
-dLinkedList.prototype.applyToEveryNode = function(){
+//iterate takes 3-4 arguments
+//1. callback (required), returns true if you want to continue (return true to apply to all nodes)
+//2. isForward: true for forwards iteration(required) or false backwards iteration
+//3. starting node
+//4. arg: optional, if you need to plug arguments into callback
+dLinkedList.prototype.iterate = function(){
 		var callback = arguments[0];
+		var isForward = arguments[1];
 		var arg = null;
-		if(arguments[1] !== null){
-			arg = arguments[1];
+		if(arguments[3] !== null){
+			arg = arguments[3];
 		}
 
-    var currentNode = this.head;
+    var currentNode = arguments[2];
     callback(currentNode);
-    currentNode = currentNode.next;
+
+    if(isForward){
+    	currentNode = currentNode.next;
+    }
+    else{
+    	currentNode = currentNode.prev;
+    }
 
     while(currentNode != null){
     		var isContinue;
+
     		if(arg !== null){
 					isContinue = callback(currentNode,arg);
     		}
     		else{
 					isContinue = callback(currentNode);
     		}
-        if(isContinue === true){
+
+        if(isContinue !== true){
         	break;
         }
-        currentNode = currentNode.next;
+
+        if(isForward){
+        	currentNode = currentNode.next;
+        }
+        else{
+        	currentNode = currentNode.prev;
+        }
     }
 };
+
+//applyToEveryNode takes 1-2 arguments
+//1. callback (required), returns true if you want to continue (return true to apply to all nodes)
+//2. arg: optional, if you need to plug arguments into callback
+
+dLinkedList.prototype.applyToEveryNode = function(){
+	var callback = arguments[0];
+	var arg = arguments[1];
+
+	if(arg === null){
+		var wrapper = function(currentNode){
+			callback(currentNode);
+			return true;
+		}
+		this.iterate(wrapper,true,this.head);
+	}
+	else{
+		var wrapper = function(currentNode,cbArg){
+			callback(currentNode,cbArg);
+			return true;
+		}
+		this.iterate(wrapper,true,this.head,arg);
+	}
+
+}
 
 window.dLinkedList = dLinkedList;
 

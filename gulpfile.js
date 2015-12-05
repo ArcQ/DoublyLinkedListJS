@@ -20,7 +20,7 @@ gulp.task('build', function () {
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
         // Add transformation tasks to the pipeline here.
-        .pipe(uglify())
+        // .pipe(uglify())
         .on('error', util.log)
     .pipe(sourcemaps.write('./src/maps/'))
     .pipe(gulp.dest('./'));
