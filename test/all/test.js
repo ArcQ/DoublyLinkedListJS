@@ -28,9 +28,11 @@ before(function(){
     expT[3] = "6,9,1,5,8,2,3,7,4,10";
     expT[4] = "9,1,8,2,3,7,4";   
     expT[5] = "0,0,0,0,0,0,0";
-    expT[6] = "0,0,0,2,1,0,0";          
+    expT[6] = "0,0,0,2,1,0,0";
+    expT[7] = "2,2,2,3,2,2,2";           
 })
- 
+
+//Note: Due to time limits, these tests only ensure the very basic scope of functionality, many required tests still need to be written
 describe('DLinkedListTest', function () {
     //T0
     it('should allow input of new values', function()
@@ -121,14 +123,14 @@ describe('DLinkedListTest', function () {
                 return true;
             }
 
-            linkedListTest.applyToEveryNode(makeNodeZero,true);
+            linkedListTest.applyToEveryNode(makeNodeZero);
             expect(expT[5]).equal(getCurOut());
         }
     );
     //T5
     it('should allow automatic backwards application of a function on a subset of the nodes`', function()
         {   var i = 0;
-            var makeNodeZero = function(currentNode){
+            var iterateCallback = function(currentNode){
                 currentNode.obj = i;
                 i++;
                 if(i<3){
@@ -139,8 +141,27 @@ describe('DLinkedListTest', function () {
                 }
             }
             var startingNode = linkedListTest.tail.prev;
-            linkedListTest.iterate(makeNodeZero,false,startingNode);
+            linkedListTest.iterate(iterateCallback,false,startingNode,false);
             expect(expT[6]).equal(getCurOut());
         }
     );
+    //T6
+    it('should allow iteration in a circular manner`', function()
+        {   var i = 0;
+            var makeNodeTwo = function(currentNode){
+                if(currentNode.obj == 2){
+                    currentNode.obj = 3;
+                    return false;
+                }
+                else{
+                    currentNode.obj = 2;
+                    return true;
+                }
+            }
+            var startingNode = linkedListTest.tail.prev.prev;
+            linkedListTest.iterate(makeNodeTwo,true,startingNode,true);
+            expect(expT[7]).equal(getCurOut());
+        }
+    );
+    
 });

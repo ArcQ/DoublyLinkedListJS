@@ -16,6 +16,8 @@ dLinkedList.makeNode = function(obj){
 	return node;
 };
 
+dLinkedList.make
+
 dLinkedList.prototype.push = function(obj){
 	var newNode = dLinkedList.makeNode(obj);
 
@@ -94,6 +96,32 @@ dLinkedList.prototype.findFirst = function(obj){
 	return undefined;
 };
 
+//finds the first node that has the obj
+dLinkedList.prototype.cGetNext = function(currentNode){
+	var nextNode;
+	if(currentNode === this.tail){
+		nextNode = this.head;
+	}
+	else{
+		nextNode = currentNode
+	}
+	return undefined;
+};
+
+//finds the first node that has the obj
+dLinkedList.prototype.cGetPrev = function(currentNode){
+	if(currentNode === this.tail){
+
+	}
+	while(currentNode !== null){
+		if(currentNode.obj === obj){
+			return currentNode;
+		}
+		currentNode = currentNode.next;
+	}
+	return undefined;
+};
+
 dLinkedList.prototype.remove = function(delNode){
 	var prevNode = null;
 	var currentNode = this.head;
@@ -127,17 +155,19 @@ dLinkedList.prototype.remove = function(delNode){
 	return false;
 };
 
-//iterate takes 3-4 arguments
+//iterate takes 4-5 arguments
 //1. callback (required), returns true if you want to continue (return true to apply to all nodes)
 //2. isForward: true for forwards iteration(required) or false backwards iteration
 //3. starting node
-//4. arg: optional, if you need to plug arguments into callback
+//4. ifCircular: true if you want tail's next to be head, head's prev to be tail
+//5. arg: optional, if you need to plug arguments into callback
 dLinkedList.prototype.iterate = function(){
 		var callback = arguments[0];
 		var isForward = arguments[1];
+		var isCircular = arguments[3];
 		var arg = null;
-		if(arguments[3] !== null){
-			arg = arguments[3];
+		if(arguments[4] != null){
+			arg = arguments[4];
 		}
 
     var currentNode = arguments[2];
@@ -153,7 +183,7 @@ dLinkedList.prototype.iterate = function(){
     while(currentNode != null){
     		var isContinue;
 
-    		if(arg !== null){
+    		if(arg != null){
 					isContinue = callback(currentNode,arg);
     		}
     		else{
@@ -164,11 +194,31 @@ dLinkedList.prototype.iterate = function(){
         	break;
         }
 
-        if(isForward){
-        	currentNode = currentNode.next;
+        if(isForward == true){
+        	if(currentNode == this.tail){
+        		if(isCircular === true){
+        			currentNode = this.head;
+        		}
+        		else{
+        			break;
+        		}
+        	}
+        	else{
+        		currentNode = currentNode.next;
+        	}
         }
         else{
-        	currentNode = currentNode.prev;
+        	if(currentNode == this.head){
+        		if(isCircular === true){
+        			currentNode = this.tail;
+        		}
+        		else{
+        			break;
+        		}
+        	}
+        	else{
+        		currentNode = currentNode.prev;
+        	}
         }
     }
 };
@@ -181,21 +231,20 @@ dLinkedList.prototype.applyToEveryNode = function(){
 	var callback = arguments[0];
 	var arg = arguments[1];
 
-	if(arg === null){
+	if(arg == null){
 		var wrapper = function(currentNode){
 			callback(currentNode);
 			return true;
 		}
-		this.iterate(wrapper,true,this.head);
+		this.iterate(wrapper,true,this.head,false);
 	}
 	else{
 		var wrapper = function(currentNode,cbArg){
 			callback(currentNode,cbArg);
 			return true;
 		}
-		this.iterate(wrapper,true,this.head,arg);
+		this.iterate(wrapper,true,this.head,false,arg);
 	}
-
 }
 
 window.dLinkedList = dLinkedList;
