@@ -154,6 +154,8 @@ dLinkedList.prototype.remove = function(delNode){
 	return false;
 };
 
+
+
 //iterate takes 4-5 arguments
 //1. callback (required), returns true if you want to continue (return true to apply to all nodes)
 //2. isForward: true for forwards iteration(required) or false backwards iteration
@@ -227,24 +229,40 @@ dLinkedList.prototype.iterate = function(){
 //2. arg: optional, if you need to plug arguments into callback
 
 dLinkedList.prototype.applyToEveryNode = function(){
+	this.iterateOnceThrough(callback,true,this.head,false,arg);
+};
+
+//iterateOnceThrough takes 4-5 arguments
+//1. callback (required), returns true if you want to continue (return true to apply to all nodes)
+//2. isForward: true for forwards iteration(required) or false backwards iteration
+//3. starting node
+//4. ifCircular: true if you want tail's next to be head, head's prev to be tail
+//5. arg: optional, if you need to plug arguments into callback
+dLinkedList.prototype.iterateOnceThrough= function(){
 	var callback = arguments[0];
-	var arg = arguments[1];
+	var isFirstIteration = true;
+	var startingNode = arguments[2];
+	var arg = arguments[4];
 
 	if(arg == null){
 		var wrapper = function(currentNode){
-			callback(currentNode);
-			return true;
+			if(currentNode == startingNode){
+				return false;
+			}
+			return callback(currentNode);
 		}
-		this.iterate(wrapper,true,this.head,false);
+		this.iterate(wrapper,arguments[1],arguments[2],arguments[3]);
 	}
 	else{
 		var wrapper = function(currentNode,cbArg){
-			callback(currentNode,cbArg);
-			return true;
+			if(currentNode == startingNode){
+				return false;
+			}
+			return callback(currentNode,cbArg);
 		}
-		this.iterate(wrapper,true,this.head,false,arg);
+		this.iterate(wrapper,arguments[1],arguments[2],arguments[3],arg);
 	}
-}
+};
 
 window.dLinkedList = dLinkedList;
 
