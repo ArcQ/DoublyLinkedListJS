@@ -229,7 +229,7 @@ dLinkedList.prototype.iterate = function(){
 //2. arg: optional, if you need to plug arguments into callback
 
 dLinkedList.prototype.applyToEveryNode = function(){
-	this.iterateOnceThrough(callback,true,this.head,false,arg);
+	this.iterateOnceThrough(arguments[0],true,this.head,false,arguments[4]);
 };
 
 //iterateOnceThrough takes 4-5 arguments
@@ -246,18 +246,20 @@ dLinkedList.prototype.iterateOnceThrough= function(){
 
 	if(arg == null){
 		var wrapper = function(currentNode){
-			if(currentNode == startingNode){
+			if((currentNode == startingNode)&&(isFirstIteration === false)){
 				return false;
 			}
+			isFirstIteration = false;
 			return callback(currentNode);
 		}
 		this.iterate(wrapper,arguments[1],arguments[2],arguments[3]);
 	}
 	else{
 		var wrapper = function(currentNode,cbArg){
-			if(currentNode == startingNode){
+			if((currentNode == startingNode)&&(isFirstIteration === false)){
 				return false;
 			}
+			isFirstIteration = false;
 			return callback(currentNode,cbArg);
 		}
 		this.iterate(wrapper,arguments[1],arguments[2],arguments[3],arg);

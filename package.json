@@ -1,6 +1,6 @@
 {
   "name": "dlinkedlist",
-  "version": "v1.3.1",
+  "version": "v1.3.2",
   "description": "Double Linked List in Javascript",
   "author": "ArcQ <eddielaw296@gmail.com>",
   "scripts": {
