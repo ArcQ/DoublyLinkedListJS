@@ -56,7 +56,7 @@ describe('DLinkedListTest', function () {
         {
             //insert 5 before 2
             var searchCB = function(node){
-                return (node.obj == "2") ? true : false;
+                return (node.obj == "2");
             };
 
             var twoNode = linkedListTest.findFirst(searchCB);
@@ -84,7 +84,7 @@ describe('DLinkedListTest', function () {
     it('should allow inserting "v1" after "v2"', function()
         {
             var searchCB = function(node){
-                return (node.obj == "5") ? true : false;
+                return (node.obj == "5");
             };
             //insert 8 after 5
             var fiveNode = linkedListTest.findFirst(searchCB);
@@ -111,7 +111,7 @@ describe('DLinkedListTest', function () {
     it('should allow the removal of nodes based on value', function()
         {
             var searchCB = function(node){
-                return (node.obj == "5") ? true : false;
+                return (node.obj == "5");
             };
             //remove 5
             fiveNode = linkedListTest.findFirst(searchCB);
