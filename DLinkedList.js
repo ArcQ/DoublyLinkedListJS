@@ -16,8 +16,6 @@ dLinkedList.makeNode = function(obj){
 	return node;
 };
 
-dLinkedList.make
-
 dLinkedList.prototype.push = function(obj){
 	var newNode = dLinkedList.makeNode(obj);
 
@@ -85,10 +83,10 @@ dLinkedList.prototype.insertBefore = function(refNode,inObj){
 	return newNode;
 };
 //finds the first node that has the obj
-dLinkedList.prototype.findFirst = function(obj){
+dLinkedList.prototype.findFirst = function(testCB){
 	var currentNode = this.head;
 	while(currentNode !== null){
-		if(currentNode.obj === obj){
+		if(testCB(currentNode)){
 			return currentNode;
 		}
 		currentNode = currentNode.next;

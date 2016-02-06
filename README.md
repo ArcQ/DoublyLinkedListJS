@@ -77,13 +77,21 @@ var newNode = list.push(1);
 
 #####FindFirst
 ```javascript
-var oneNode = linkedListTest.findFirst(1);
+//Set Search Condition Callback Based on CurrentNode Value
+
+var searchCB = function(currentNode){
+                return (currentNode.obj == "2") ? true : false;
+            };
+var oneNode = linkedListTest.findFirst(searchCB);
 ```
 
 #####Insert
 ```javascript
 //insert 8 after 5
-var oneNode = linkedListTest.findFirst(1);
+var searchCB = function(currentNode){
+                return (currentNode.obj == "1") ? true : false;
+            };
+var oneNode = linkedListTest.findFirst(searchCB);
 if (oneNode !== undefined)
 {
     linkedListTest.insertAfter(oneNode,2);
@@ -94,21 +102,28 @@ if (oneNode !== undefined)
 
 ####Remove
 ```javascript
-oneNode = linkedListTest.findFirst(1);
+var searchCB = function(currentNode){
+                return (currentNode.obj == "1") ? true : false;
+            };
+var oneNode = linkedListTest.findFirst(searchCB);
 linkedListTest.remove(oneNode);
 ```
 
 ####Get Next (Circular Linked List)
 Use this function to retrive the next node if your linked list is linked in a circular manner.
 ```javascript
-var oneNode = linkedListTest.findFirst(1);
-var twoNode = linkedListTest.cGetNext(oneNode);
+var searchCB = function(currentNode){
+                return (currentNode.obj == "1") ? true : false;
+            };
+var oneNode = linkedListTest.findFirst(searchCB);var twoNode = linkedListTest.cGetNext(oneNode);
 ```
 
 ####Get Prev (Circular Linked List)
 Use this function to retrive the previous node if your linked list is linked in a circular manner.
 ```javascript
-var oneNode = linkedListTest.findFirst(1);
-var threeNode = linkedListTest.cGetPrev(oneNode);
+var searchCB = function(currentNode){
+                return (currentNode.obj == "1") ? true : false;
+            };
+var oneNode = linkedListTest.findFirst(searchCB);var threeNode = linkedListTest.cGetPrev(oneNode);
 ```
 
