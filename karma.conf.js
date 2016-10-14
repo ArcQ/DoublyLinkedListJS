@@ -28,8 +28,8 @@ module.exports = function (config) {
       module: {
         preLoaders: [
           {
-            test: /-test\.js$/,
-            include: /src/,
+            test: /\.spec\.js$/,
+            include: /test/,
             exclude: /(bower_components|node_modules)/,
             loader: 'babel',
             query: {

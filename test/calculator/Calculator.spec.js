@@ -1,4 +1,4 @@
-import Calculator from '../Calculator';
+var Calculator = require('../../src/Calculator');
 
 describe('Calculator', () => {
   it('should add two numbers', () => {
