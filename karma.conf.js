@@ -10,13 +10,13 @@ module.exports = function (config) {
       ],
     },
     files: [
-      'tests.webpack.js',
+      'test/tests.bundle.js',
     ],
     frameworks: [
       'jasmine',
     ],
     preprocessors: {
-      'tests.webpack.js': ['jshint', 'webpack', 'sourcemap'],
+      'test/tests.bundle.js': ['jshint', 'webpack', 'sourcemap'],
     },
     reporters: ['spec', 'coverage'],
     jshintPreprocessor: {
