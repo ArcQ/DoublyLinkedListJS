@@ -2,10 +2,6 @@
   "name": "dlinkedlist",
   "version": "v1.3.3",
   "description": "Double Linked List in Javascript",
-  "author": "ArcQ <eddielaw296@gmail.com>",
-  "scripts": {
-    "test": "mocha"
-  },
   "main": "DLinkedList.js",
   "repository": {
   "type": "git",
@@ -14,18 +10,48 @@
   "bugs": {
   "url": "https://github.com/ArcQ/DoublyLinkedListJS/issues"
 },
-  "keywords": [],
-  "dependencies": {},
-  "devDependencies": {
-    "browserify": "^12.0.1",
-    "chai": "^3.4.1",
-    "gulp": "3.9.0",
-    "gulp-mocha": "^2.2.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.1",
-    "gulp-util": "^3.0.7",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+  "scripts": {
+    "build": "webpack webpack.config.js",
+    "build:dev": "webpack webpack.dev.config.js",
+    "build:watch": "webpack --watch webpack.dev.config.js",
+    "prepublish": "npm run build",
+    "clean": "rimraf dist build",
+    "lint": "jshint src",
+    "test": "karma start --single-run --no-auto-watch karma.conf.js"
   },
-  "license": "MIT"
+  "watch": {
+    "build": "{src,test}/*.js"
+  },
+  "keywords": [
+    "es6",
+    "babel",
+    "webpack",
+    "jasmine",
+    "karma",
+    "istanbul",
+    "boilerplate"
+  ],
+  "author": "ArcQ <eddielaw296@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.4.0",
+    "babel-istanbul": "^0.6.0",
+    "babel-istanbul-loader": "0.0.1",
+    "babel-loader": "^6.2.1",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-preset-es2015": "^6.3.13",
+    "jasmine-core": "^2.4.1",
+    "jasmine-spec-reporter": "^2.7.0",
+    "karma": "^0.13.19",
+    "karma-coverage": "^0.5.3",
+    "karma-jasmine": "^0.3.6",
+    "karma-jshint-preprocessor": "0.0.6",
+    "karma-phantomjs2-launcher": "^0.5.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "0.0.26",
+    "karma-webpack": "^1.7.0",
+    "loader-utils": "^0.2.12",
+    "rimraf": "^2.5.0",
+    "webpack": "^1.12.11"
+  }
 }
