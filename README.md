@@ -1,6 +1,6 @@
-#DoublyLinkedListJS
+#dlinkedlist
 
-Simple Doubly Linked List implemented in Javascript (Browserified).
+Simple Doubly Linked List implemented in Javascript (using Webpack).
 https://github.com/ArcQ/DoublyLinkedListJS
 
 Install:
