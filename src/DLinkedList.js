@@ -33,7 +33,7 @@ dLinkedList.prototype.push = function(obj){
 		this.tail = newNode;
 	}
 	return newNode;
-}
+};
 
 dLinkedList.prototype.insertAfter = function(refNode,inObj){
 	
@@ -100,7 +100,7 @@ dLinkedList.prototype.cGetNext = function(currentNode){
 		nextNode = this.head;
 	}
 	else{
-		nextNode = currentNode
+		nextNode = currentNode;
 	}
 	return undefined;
 };
@@ -126,9 +126,9 @@ dLinkedList.prototype.remove = function(delNode){
 	while(currentNode !== null){
 
 		if(currentNode === delNode){
-
+      var nextNode = '';
 			if(currentNode === this.head){
-				var nextNode = currentNode.next;
+				nextNode = currentNode.next;
 				this.head = nextNode;
 				this.head.prev = null;
 			}
@@ -137,7 +137,7 @@ dLinkedList.prototype.remove = function(delNode){
 				this.tail.next = null;
 			}
 			else{
-				var nextNode = currentNode.next;
+				nextNode = currentNode.next;
 				prevNode.next = nextNode;
 				nextNode.prev = prevNode;
 			}
@@ -165,7 +165,7 @@ dLinkedList.prototype.iterate = function(){
 		var isForward = arguments[1];
 		var isCircular = arguments[3];
 		var arg = null;
-		if(arguments[4] != null){
+		if(arguments[4]){
 			arg = arguments[4];
 		}
 
@@ -179,10 +179,10 @@ dLinkedList.prototype.iterate = function(){
     	currentNode = currentNode.prev;
     }
 
-    while(currentNode != null){
+    while(currentNode !== null){
     		var isContinue;
 
-    		if(arg != null){
+    		if(arg){
 					isContinue = callback(currentNode,arg);
     		}
     		else{
@@ -193,9 +193,9 @@ dLinkedList.prototype.iterate = function(){
         	break;
         }
 
-        if(isForward == true){
+        if(isForward){
         	if(currentNode == this.tail){
-        		if(isCircular === true){
+        		if(isCircular){
         			currentNode = this.head;
         		}
         		else{
@@ -241,25 +241,25 @@ dLinkedList.prototype.iterateOnceThrough= function(){
 	var isFirstIteration = true;
 	var startingNode = arguments[2];
 	var arg = arguments[4];
-
-	if(arg == null){
-		var wrapper = function(currentNode){
+  var wrapper;
+	if(arg === null){
+		wrapper = function(currentNode){
 			if((currentNode == startingNode)&&(isFirstIteration === false)){
 				return false;
 			}
 			isFirstIteration = false;
 			return callback(currentNode);
-		}
+		};
 		this.iterate(wrapper,arguments[1],arguments[2],arguments[3]);
 	}
 	else{
-		var wrapper = function(currentNode,cbArg){
+		wrapper = function(currentNode,cbArg){
 			if((currentNode == startingNode)&&(isFirstIteration === false)){
 				return false;
 			}
 			isFirstIteration = false;
 			return callback(currentNode,cbArg);
-		}
+		};
 		this.iterate(wrapper,arguments[1],arguments[2],arguments[3],arg);
 	}
 };
