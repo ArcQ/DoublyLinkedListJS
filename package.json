@@ -2,7 +2,7 @@
   "name": "dlinkedlist",
   "version": "v1.3.3",
   "description": "Double Linked List in Javascript",
-  "main": "DLinkedList.js",
+  "main": "dlinkedlist.js",
   "repository": {
   "type": "git",
   "url": "https://github.com/ArcQ/DoublyLinkedListJS"
@@ -12,8 +12,8 @@
 },
   "scripts": {
     "build": "webpack webpack.config.js",
-    "build:dev": "webpack webpack.dev.config.js",
-    "build:watch": "webpack --watch webpack.dev.config.js",
+    "build:dev": "webpack --config webpack.dev.config.js",
+    "build:watch": "webpack --watch --config webpack.dev.config.js",
     "prepublish": "npm run build",
     "clean": "rimraf dist build",
     "lint": "jshint src",
