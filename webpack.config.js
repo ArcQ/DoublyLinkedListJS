@@ -1,7 +1,7 @@
 module.exports = {
-  entry: ["./src/Calculator.js"],
+  entry: ["./src/dlinkedlist.js"],
   output: {
-    filename: "./dist/calculator.js"
+    filename: "./dist/dlinkedlist.js"
   },
   module: {
     loaders: [
