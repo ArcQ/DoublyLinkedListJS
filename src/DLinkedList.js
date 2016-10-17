@@ -264,6 +264,4 @@ dLinkedList.prototype.iterateOnceThrough= function(){
 	}
 };
 
-window.dLinkedList = dLinkedList;
-
 module.exports = dLinkedList;
