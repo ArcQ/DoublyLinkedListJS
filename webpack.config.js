@@ -1,7 +1,10 @@
-module.exports = {
+var config =  {
   entry: ["./src/dlinkedlist.js"],
   output: {
-    filename: "./dist/dlinkedlist.js"
+    filename: "dlinkedlist.js",
+    libraryTarget: 'commonjs2',
+    library: 'dlinkedlist',
+    path: './build',
   },
   module: {
     loaders: [
@@ -19,3 +22,13 @@ module.exports = {
     extensions: ['', '.js']
   },
 };
+
+if(process.env.NODE_ENV==='dev'){
+  config.devtool = 'inline-source-map';
+  config.output.path= './build';
+}
+else if(process.env.NODE_ENV==='dist'){
+  config.output.path = './dist';
+}
+
+module.exports = config;

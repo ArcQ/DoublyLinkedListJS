@@ -56,7 +56,7 @@ module.exports = function (config) {
               cacheDirectory: true,
             },
           },
-        ],
+        ]
       },
     },
   });

@@ -11,13 +11,15 @@
   "url": "https://github.com/ArcQ/DoublyLinkedListJS/issues"
 },
   "scripts": {
-    "build": "webpack webpack.config.js",
-    "build:dev": "webpack --config webpack.dev.config.js",
-    "build:watch": "webpack --watch --config webpack.dev.config.js",
-    "prepublish": "npm run build",
+    "build": "rimraf build && NODE_ENV=dev NODE_ENV=dev webpack --watch --config webpack.config.js",
+    "test": "NODE_ENV=dev karma start karma.conf.js",
+    "dist": "NODE_ENV=dist npm run build:dist && NODE_ENV=dev npm run test:dist",
+    "publish": "NODE_ENV=dist npm run build",
+    
     "clean": "rimraf dist build",
     "lint": "jshint src",
-    "test": "karma start --single-run --no-auto-watch karma.conf.js"
+    "build:dist": "rimraf dist && NODE_ENV=dist webpack --config webpack.config.js",
+    "test:dist": "export NODE_ENV=dist && karma start --single-run --no-auto-watch karma.conf.js"
   },
   "watch": {
     "build": "{src,test}/*.js"
