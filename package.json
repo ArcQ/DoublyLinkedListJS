@@ -15,10 +15,17 @@
     "test": "NODE_ENV=dev karma start karma.conf.js",
     "dist": "NODE_ENV=dist npm run build:dist && NODE_ENV=dev npm run test:dist",
     "publish": "NODE_ENV=dist npm run build",
+
     "clean": "rimraf dist build",
     "lint": "jshint src",
     "build:dist": "rimraf dist && NODE_ENV=dist webpack --config webpack.config.js",
-    "test:dist": "export NODE_ENV=dist && karma start --single-run --no-auto-watch karma.conf.js"
+    "test:dist": "export NODE_ENV=dist && karma start --single-run --no-auto-watch karma.conf.js",
+    "git:push": "jshint src",
+    "git:push": "jshint src",
+
+    "preversion": "npm test",
+    "version": "npm run build && git add -A dist",
+    "postversion": "git push && git push --tags"
   },
   "watch": {
     "build": "{src,test}/*.js"
