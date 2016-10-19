@@ -1,49 +1,14 @@
 #!/bin/sh
-
-#utils
-function throwErrNoVersion {
-  case $1 in
-    noVersion)
-      echo "ERR: version params are requried and must be provided"
-      ;;
-    noMessage)
-      echo "ERR:  message params are requried and must be provided"
-      ;;
-  esac
-  exit 1
-}
-
-
-#main
-for i in "$@"; do 
-  case $i in
-    -m)
-      message=$2
-      shift 2;
-      ;;
-    major)
-      shift;
-      mode="major"
-      ;;
-    minor)
-      shift;
-      mode="minor"
-      ;;
-    patch)
-      shift;
-      mode="patch"
-      ;;
-  esac
+echo "What release is this?"
+select mode in "patch" "minor" "major"; do
+  break;
 done
 
+while true; do
+    read -p "What message would you like to attach?" message
+    break;
+  done
 
-if [[ -z $message ]] ; then
-  throwErrNoVersion "noMessage"
-fi
-
-if [[ -z $mode ]] ; then
-  throwErrNoVersion "noVersion"
-fi
 
 echo "bumping $mode version with release message: $message"
 

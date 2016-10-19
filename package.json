@@ -14,7 +14,7 @@
     "build": "rimraf build && NODE_ENV=dev NODE_ENV=dev webpack --watch --config webpack.config.js",
     "test": "NODE_ENV=dev karma start --no-auto-watch karma.conf.js",
     "dist": "NODE_ENV=dist npm run build:dist && NODE_ENV=dev npm run test:dist",
-    "release": "sh release.sh patch -m",
+    "release": "sh release.sh",
     "clean": "rimraf dist build",
     "build:dist": "rimraf dist && NODE_ENV=dist webpack --config webpack.config.js",
     "test:dist": "export NODE_ENV=dist && karma start --single-run --no-auto-watch karma.conf.js",
