@@ -1,7 +1,7 @@
 var config =  {
-  entry: ['./src/dlinkedlist.js"],
+  entry: ['./src/dlinkedlist.js'],
   output: {
-    filename: "dlinkedlist.js",
+    filename: 'dlinkedlist.js',
     libraryTarget: 'commonjs2',
     library: 'dlinkedlist',
     path: './build',
