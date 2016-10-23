@@ -1,13 +1,6 @@
 var expT = [];
 
-if(process.env.NODE_ENV==='dev'){
-  var fileDir = 'src';
-}
-else if(process.env.NODE_ENV==='dist'){
-  fileDir = 'dist';
-}
-
-var dlinkedlist = require('../../' + fileDir + '/dlinkedlist');
+var dlinkedlist = require('../../src/dlinkedlist.js');
 
 var linkedListTest = new dlinkedlist();
 
