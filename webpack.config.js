@@ -1,5 +1,5 @@
 var config =  {
-  entry: ["./src/dlinkedlist.js"],
+  entry: ['./src/dlinkedlist.js"],
   output: {
     filename: "dlinkedlist.js",
     libraryTarget: 'commonjs2',
@@ -24,7 +24,7 @@ var config =  {
 };
 
 if(process.env.NODE_ENV==='dev'){
-  config.devtool = 'inline-source-map';
+  onfig.devtool = 'inline-source-map';
   config.output.path= './build';
 }
 else if(process.env.NODE_ENV==='dist'){
