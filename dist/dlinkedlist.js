@@ -174,33 +174,37 @@ module.exports =
 	};
 
 	dLinkedList.prototype.remove = function(delNode){
-	  var prevNode = null;
-	  var currentNode = this.head;
-
-	  while(currentNode !== null){
-
-	    if(currentNode === delNode){
-	      var nextNode = '';
-	      if(currentNode === this.head){
-	        nextNode = currentNode.next;
-	        this.head = nextNode;
-	        this.head.prev = null;
-	      }
-	      else if(currentNode === this.tail){
-	        this.tail = currentNode.prev;
-	        this.tail.next = null;
-	      }
-	      else{
-	        nextNode = currentNode.next;
-	        prevNode.next = nextNode;
-	        nextNode.prev = prevNode;
-	      }
-	      currentNode = null;
-	      return true;
+	  var nextNode = null;
+	  if(delNode === this.head){
+	    nextNode = delNode.next;
+	    this.head = nextNode;
+	    if(nextNode){
+	      this.head.prev = null;
 	    }
+	    else{
+	      this.tail = null;
+	    }
+	  }
+	  else if(delNode === this.tail){
+	    if(delNode.prev){
+	      this.tail = delNode.prev;
+	      this.tail.next = null;
+	    }
+	  }
+	  else{
+	    prevNode = delNode.prev;
+	    nextNode = delNode.next;
+	    prevNode.next = nextNode;
+	    nextNode.prev = prevNode;
+	  }
 
-	    prevNode = currentNode;
-	    currentNode = currentNode.next;
+	  delNode = null;
+	};
+
+	dLinkedList.prototype.removeAll = function(){
+
+	  while(this.head !== null){
+	    this.remove(this.head);
 	  }
 
 	  return false;

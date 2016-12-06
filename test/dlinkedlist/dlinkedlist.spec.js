@@ -175,5 +175,13 @@ describe('DLinkedListTest', function () {
             expect(expT[7]).toEqual(getCurOut());
         }
     );
+    //T7
+    it('should allow removal of all items in list', function()
+        {   var i = 0;
+            linkedListTest.removeAll();
+            expect(null).toEqual(linkedListTest.tail);
+            expect(null).toEqual(linkedListTest.head);
+        }
+    );
     
 });
