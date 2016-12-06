@@ -133,7 +133,6 @@ describe('DLinkedListTest', function () {
         {
             var makeNodeZero = function(currentNode){
                 currentNode.obj = 0;
-                return true;
             };
 
             linkedListTest.applyToEveryNode(makeNodeZero);

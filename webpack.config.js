@@ -24,7 +24,7 @@ var config =  {
 };
 
 if(process.env.NODE_ENV==='dev'){
-  onfig.devtool = 'inline-source-map';
+  config.devtool = 'inline-source-map';
   config.output.path= './build';
 }
 else if(process.env.NODE_ENV==='dist'){

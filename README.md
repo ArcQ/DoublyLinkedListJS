@@ -12,7 +12,7 @@ npm install dlinkedlist
 #####Apply To Every Node
 To apply a callback function one very node, use list.applyToEveryNode() which takes 1-2 arguments:
 
-1. callback (required), returns true if you want to continue (return true to apply to all nodes)
+1. callback (required), (always returns true to apply to all nodes)
 2. arg: optional, if you need to plug arguments into callback
 
 ```javascript
@@ -20,7 +20,6 @@ function MakeAllNodesZero(){
   var makeNodeZero = function(currentNode,arg){
     console.log(arg.test);
     currentNode.obj = 0;
-    return true;
   }
   var callbackArgument = {test};
   linkedListTest.applyToEveryNode(makeNodeZero,callbackArgument);
