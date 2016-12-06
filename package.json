@@ -1,6 +1,6 @@
 {
   "name": "dlinkedlist",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "Double Linked List in Javascript",
   "main": "dist/dlinkedlist.js",
   "repository": {
