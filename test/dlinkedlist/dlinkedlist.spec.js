@@ -1,8 +1,6 @@
 var expT = [];
 
-var Dlinkedlist = require('../../src/dlinkedlist');
-
-var linkedListTest = new Dlinkedlist();
+var dlinkedlist = require('../../src/dlinkedlist.js');
 
 var searchForThreeCb, getCurOut;
 

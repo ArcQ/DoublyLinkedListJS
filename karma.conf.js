@@ -6,7 +6,7 @@ module.exports = function (config) {
     coverageReporter: {
       reporters: [
         { type: 'html', subdir: 'html' },
-        { type: 'lcovonly', subdir: '.' },
+        { type: 'text' },
       ],
     },
     files: [
@@ -60,4 +60,4 @@ module.exports = function (config) {
       },
     },
   });
-};
+}
