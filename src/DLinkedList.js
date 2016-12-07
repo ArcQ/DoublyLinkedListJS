@@ -121,6 +121,7 @@ dLinkedList.prototype.cGetPrev = function(currentNode){
 
 dLinkedList.prototype.remove = function(delNode){
   var nextNode = null;
+  var prevNode = null;
   if(delNode === this.head){
     nextNode = delNode.next;
     this.head = nextNode;
